@@ -1,84 +1,121 @@
-**# 🧬 IVF AI Chatbot (RAG-Based Healthcare Assistant)
+# 🧬 IVF AI Chatbot (RAG-Based Healthcare Assistant)
 
-> AI-powered IVF healthcare chatbot using RAG, FAISS, LangChain, SentenceTransformers, Ollama, and Streamlit for document-grounded medical question answering.
+> AI-powered IVF healthcare chatbot using Retrieval-Augmented Generation (RAG), FAISS, LangChain, SentenceTransformers, Ollama, and Streamlit for document-grounded medical question answering.
 
 ---
 
-# 📌 Project Overview
+# 🚀 Live Project Overview
 
-The **IVF AI Chatbot** is a Retrieval-Augmented Generation (RAG) based healthcare assistant designed to provide accurate, context-aware, and document-grounded responses for IVF-related questions.
+The **IVF AI Chatbot** is a healthcare-focused Generative AI application designed to provide accurate, context-aware, and document-grounded responses for IVF-related questions.
 
-The system combines:
+The project combines:
 - Semantic Search
 - Vector Databases
+- Retrieval-Augmented Generation (RAG)
 - Local LLM Inference
-- Medical Knowledge Retrieval
 - Healthcare Safety Guardrails
 
 to create a reliable IVF patient support assistant.
 
----
-
-# 🚨 Problem Statement
-
-Patients undergoing IVF treatment often:
-- struggle to understand complex medical terminology
-- face anxiety due to lack of instant support
-- search unreliable internet sources
-- receive inconsistent information
-- need 24/7 assistance outside clinic hours
-
-Traditional chatbots hallucinate and provide generic responses.
-
-This project solves that problem using **Retrieval-Augmented Generation (RAG)** to generate responses strictly from verified IVF medical documents.
+Unlike traditional AI chatbots that hallucinate, this system retrieves information directly from verified IVF medical documents before generating responses.
 
 ---
 
-# 💡 Solution
+# 📌 Problem Statement
 
-This chatbot:
-- retrieves relevant IVF medical content from PDFs/DOCX/Web sources
-- converts them into embeddings
-- stores them in a FAISS vector database
-- performs semantic similarity search
-- injects retrieved context into the LLM
-- generates grounded healthcare responses
+Patients undergoing IVF treatment often face:
+
+- Anxiety due to lack of instant medical guidance
+- Difficulty understanding medical terminology
+- Inconsistent information from online sources
+- Long waiting times for consultations
+- Limited support outside clinic hours
+
+Traditional LLM-based chatbots may generate:
+- inaccurate responses
+- hallucinated medical information
+- unsafe healthcare advice
+
+This project solves that problem using **Retrieval-Augmented Generation (RAG)**.
+
+---
+
+# 💡 Proposed Solution
+
+The chatbot:
+1. Loads IVF medical documents
+2. Converts them into embeddings
+3. Stores embeddings inside FAISS vector database
+4. Performs semantic similarity search
+5. Retrieves relevant medical context
+6. Injects retrieved context into the LLM prompt
+7. Generates grounded healthcare responses
+
+This significantly reduces hallucination and improves factual accuracy.
 
 ---
 
 # 🏗️ System Architecture
 
-## High Level Design (HLD)
+# 🔹 High Level Design (HLD)
 
-![HLD Architecture](assets/architecture/hld.png)
+![HLD](https://raw.githubusercontent.com/LuckySingh0297/ivf-ai-chatbot-rag/main/Images/hld.png)
 
 ---
 
-## Low Level Design (LLD)
+# 🔹 Low Level Design (LLD)
 
-![LLD Architecture](assets/architecture/lld.png)
+![LLD](https://raw.githubusercontent.com/LuckySingh0297/ivf-ai-chatbot-rag/main/Images/lld.png)
+
+---
+
+# 🔹 RAG Pipeline Flow
+
+![Pipeline](https://raw.githubusercontent.com/LuckySingh0297/ivf-ai-chatbot-rag/main/Images/ingest.png)
 
 ---
 
 # 🖥️ Application UI
 
-![Streamlit UI](assets/screenshots/ui.png)
+![UI](https://raw.githubusercontent.com/LuckySingh0297/ivf-ai-chatbot-rag/main/Images/app.png)
 
 ---
 
-# ⚡ Core Features
+# 🤖 Chatbot Logic
+
+![Chatbot](https://raw.githubusercontent.com/LuckySingh0297/ivf-ai-chatbot-rag/main/Images/chatbot.png)
+
+---
+
+# 🎥 Project Demo Videos
+
+# ▶️ Full Project Demo
+
+[🎬 Watch Demo Video](https://github.com/LuckySingh0297/ivf-ai-chatbot-rag/blob/main/Presentation/presentation%20demo%20video.mp4)
+
+---
+
+# ▶️ Additional Videos
+
+[📂 View All Videos](https://github.com/LuckySingh0297/ivf-ai-chatbot-rag/tree/main/Videos)
+
+---
+
+# ⚡ Key Features
 
 ✅ RAG-based healthcare chatbot  
 ✅ IVF medical knowledge retrieval  
 ✅ FAISS vector database  
 ✅ Semantic search using embeddings  
-✅ Local inference using Ollama + Mistral  
+✅ Local LLM inference using Ollama + Mistral  
 ✅ Streamlit conversational UI  
 ✅ Chat history management  
-✅ Multiple document support  
-✅ Healthcare hallucination control  
+✅ Multiple document ingestion  
+✅ PDF + DOCX + Web support  
+✅ Hallucination reduction pipeline  
+✅ Healthcare-safe prompting  
+✅ Context-grounded answer generation  
 ✅ Short & Detailed response modes  
-✅ PDF + DOCX + Web ingestion  
 ✅ Local/private deployment support  
 
 ---
@@ -91,11 +128,12 @@ This chatbot:
 | Backend | Python |
 | Framework | LangChain |
 | Vector Database | FAISS |
-| Embeddings | all-MiniLM-L6-v2 |
-| LLM | Mistral (Ollama) |
+| Embedding Model | all-MiniLM-L6-v2 |
+| LLM | Mistral via Ollama |
 | NLP | SentenceTransformers |
-| Document Loaders | PyPDF, DOCX Loader |
+| Document Loaders | PyPDFLoader, DOCX Loader |
 | Semantic Search | FAISS Similarity Search |
+| Prompt Engineering | LangChain Prompt Templates |
 
 ---
 
@@ -111,116 +149,175 @@ ivf-ai-chatbot-rag/
 ├── README.md
 ├── .gitignore
 │
+├── Images/
+│   ├── hld.png
+│   ├── lld.png
+│   ├── app.png
+│   ├── chatbot.png
+│   └── ingest.png
+│
+├── Videos/
+│
+├── Presentation/
+│
 ├── data/
 │   ├── pdfs/
-│   ├── docs/
-│
-├── assets/
-│   ├── architecture/
-│   ├── screenshots/
-│   └── demo/
-│
-├── portfolio_site/
+│   └── docs/
 │
 └── faiss_index/
 ```
 
 ---
 
-# 🔄 RAG Pipeline Flow
+# 🔄 RAG Workflow
 
-## Step 1 — Document Ingestion
-Medical PDFs, DOCX files, and trusted healthcare websites are loaded.
+# Step 1 — Document Ingestion
 
-## Step 2 — Text Chunking
-Documents are split into smaller chunks for efficient retrieval.
+Medical PDFs, DOCX files, and trusted IVF websites are loaded.
 
-## Step 3 — Embedding Generation
+Supported Sources:
+- IVF PDFs
+- Research papers
+- DOCX documents
+- IVF counseling documents
+- Trusted healthcare websites
+
+---
+
+# Step 2 — Text Chunking
+
+Documents are split into smaller semantic chunks.
+
+Why?
+- Improves retrieval precision
+- Better semantic understanding
+- More accurate context matching
+
+---
+
+# Step 3 — Embedding Generation
+
 Each chunk is converted into vector embeddings using:
+
 ```python
 all-MiniLM-L6-v2
 ```
 
-## Step 4 — Vector Storage
-Embeddings are stored in a FAISS vector database.
-
-## Step 5 — User Query
-The user asks an IVF-related question.
-
-## Step 6 — Semantic Retrieval
-Relevant document chunks are retrieved using similarity search.
-
-## Step 7 — Prompt Augmentation
-Retrieved context is injected into the LLM prompt.
-
-## Step 8 — Response Generation
-Mistral generates a grounded medical response.
+The embedding model captures semantic meaning instead of simple keywords.
 
 ---
 
-# 🛡️ Healthcare Safety Features
+# Step 4 — Vector Storage
 
-Since this is a healthcare project, hallucination control was extremely important.
+Embeddings are stored inside:
+
+```python
+FAISS Vector Database
+```
+
+FAISS enables:
+- extremely fast similarity search
+- low latency retrieval
+- local deployment
+- efficient semantic matching
+
+---
+
+# Step 5 — User Query
+
+The user asks an IVF-related question.
+
+Example:
+```text
+What is IVF and how does it work?
+```
+
+---
+
+# Step 6 — Semantic Similarity Search
+
+The query embedding is matched against document embeddings.
+
+Top relevant chunks are retrieved using cosine similarity.
+
+---
+
+# Step 7 — Prompt Augmentation
+
+Retrieved medical context is injected into the LLM prompt.
+
+This ensures:
+- grounded responses
+- reduced hallucinations
+- document-aware generation
+
+---
+
+# Step 8 — Response Generation
+
+The Mistral LLM generates a healthcare response using retrieved context only.
+
+---
+
+# 🛡️ Healthcare Safety & Hallucination Control
+
+Healthcare AI systems require strong hallucination prevention.
 
 Implemented safeguards:
 
-- Temperature control
-- Context-grounded prompting
-- No diagnosis instructions
-- Source-filtered responses
-- Retrieval-only generation
-- Trusted medical documents only
-- Deterministic response generation
+✅ Context-grounded prompting  
+✅ Retrieval-only generation  
+✅ Trusted medical sources  
+✅ No diagnosis instructions  
+✅ Controlled generation rules  
+✅ Semantic filtering  
+✅ Deterministic prompting strategy  
 
 ---
 
-# 📚 Knowledge Sources
+# 📚 Knowledge Base Sources
 
 The chatbot uses:
-- IVF medical PDFs
+- IVF medical research papers
 - IVF counseling documents
-- Fertility treatment documents
-- Trusted healthcare websites
-- Research papers
+- Fertility treatment guides
 - IVF clinic workflow documents
+- WHO/NHS healthcare content
+- Trusted IVF PDFs and DOCX files
 
 ---
 
 # 📸 Screenshots
 
-## Chat Interface
+# 🔹 Main Chat Interface
 
-![Chat UI](assets/screenshots/chatbot.png)
-
----
-
-## Ingestion Pipeline
-
-![Ingest Pipeline](assets/architecture/ingest.png)
+![Chat Interface](https://raw.githubusercontent.com/LuckySingh0297/ivf-ai-chatbot-rag/main/Images/app.png)
 
 ---
 
-# 🎥 Demo
+# 🔹 Ingestion Pipeline
 
-## Project Demo Video
-📹 `assets/demo/demo.mp4`
+![Ingestion](https://raw.githubusercontent.com/LuckySingh0297/ivf-ai-chatbot-rag/main/Images/ingest.png)
 
-## Technical Explanation Video
-📹 `assets/demo/explanation.mp4`
+---
+
+# 🔹 Chatbot Retrieval Logic
+
+![Retrieval Logic](https://raw.githubusercontent.com/LuckySingh0297/ivf-ai-chatbot-rag/main/Images/chatbot.png)
 
 ---
 
 # ⚙️ Installation
 
-## Clone Repository
+# Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/ivf-ai-chatbot-rag.git
+git clone https://github.com/LuckySingh0297/ivf-ai-chatbot-rag.git
 ```
 
 ---
 
-## Create Virtual Environment
+# Create Virtual Environment
 
 ```bash
 python -m venv .venv
@@ -228,21 +325,23 @@ python -m venv .venv
 
 ---
 
-## Activate Environment
+# Activate Environment
 
-### Windows
+## Windows
+
 ```bash
 .venv\Scripts\activate
 ```
 
-### Linux / Mac
+## Linux / Mac
+
 ```bash
 source .venv/bin/activate
 ```
 
 ---
 
-## Install Dependencies
+# Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -260,8 +359,9 @@ python ingest.py
 
 This:
 - loads documents
+- chunks text
 - creates embeddings
-- builds FAISS vector index
+- stores vectors in FAISS
 
 ---
 
@@ -276,12 +376,13 @@ streamlit run app.py
 # 🧪 Example Questions
 
 - What is IVF?
-- How long does an IVF cycle take?
-- Can women with PCOS undergo IVF?
-- What are IVF success rates?
+- How long does IVF take?
 - Is IVF painful?
+- Can PCOS patients undergo IVF?
+- What are IVF success rates?
 - What is ICSI?
-- Can IVF help with low sperm count?
+- Can IVF help low sperm count?
+- Is IVF safe for women over 40?
 
 ---
 
@@ -289,38 +390,45 @@ streamlit run app.py
 
 # ❓ Why did you use RAG instead of Fine-Tuning?
 
-### Answer:
-Fine-tuning is expensive, harder to update, and still prone to hallucinations.
+### Answer
+
+Fine-tuning:
+- is expensive
+- harder to maintain
+- requires retraining
+- still hallucinates
 
 RAG was chosen because:
-- knowledge can be updated dynamically
-- responses remain grounded in source documents
+- knowledge updates dynamically
+- responses stay grounded in documents
 - no retraining required
-- better explainability
-- safer for healthcare applications
+- explainability improves
+- safer for healthcare systems
 
 ---
 
 # ❓ Why FAISS?
 
-### Answer:
+### Answer
+
 FAISS provides:
-- extremely fast vector similarity search
-- efficient local deployment
+- fast vector similarity search
 - low latency retrieval
-- no external API dependency
+- local deployment
+- efficient semantic matching
 - privacy preservation for medical data
 
 ---
 
 # ❓ Why all-MiniLM-L6-v2?
 
-### Answer:
+### Answer
+
 This embedding model:
 - lightweight
 - CPU efficient
 - fast inference
-- high semantic similarity accuracy
+- strong semantic understanding
 - ideal for local RAG systems
 
 It generates 384-dimensional embeddings optimized for semantic retrieval.
@@ -329,79 +437,87 @@ It generates 384-dimensional embeddings optimized for semantic retrieval.
 
 # ❓ Why Ollama + Mistral?
 
-### Answer:
-Using local LLM inference:
-- reduces API cost
-- improves privacy
-- enables offline usage
-- gives infrastructure control
-- supports healthcare compliance scenarios
+### Answer
+
+Local inference provides:
+- reduced API cost
+- better privacy
+- offline capability
+- infrastructure control
+- healthcare compliance benefits
 
 ---
 
 # ❓ How did you reduce hallucinations?
 
-### Answer:
-Hallucinations were reduced using:
+### Answer
+
+Hallucination reduction techniques:
 - retrieval-grounded prompting
-- low temperature
-- trusted medical sources
-- context-only answering
-- strict prompt rules
-- semantic filtering
+- trusted medical documents
+- semantic retrieval
+- low randomness prompting
+- context-only generation
+- strict response rules
 
 ---
 
 # ❓ Why chunk documents?
 
-### Answer:
+### Answer
+
 Chunking improves:
-- retrieval precision
+- retrieval accuracy
+- semantic matching
 - embedding quality
-- semantic relevance
 - token efficiency
 
-Without chunking, retrieval becomes noisy and inaccurate.
+Without chunking:
+- retrieval becomes noisy
+- relevant context may be lost
 
 ---
 
 # ❓ Why use embeddings?
 
-### Answer:
-Embeddings convert text into numerical vectors capturing semantic meaning.
+### Answer
 
-This allows:
-- semantic similarity search
-- meaning-based retrieval
-- better context matching than keyword search
+Embeddings convert text into semantic vectors.
+
+This enables:
+- meaning-based search
+- semantic retrieval
+- contextual matching
+
+instead of simple keyword search.
 
 ---
 
 # 📈 Future Improvements
 
 - Conversational memory
-- Multi-turn context
-- Hybrid search (BM25 + Vector Search)
+- Hybrid Search (BM25 + Vector Search)
 - Re-ranking models
-- Medical citation generation
 - LangSmith tracing
-- Authentication
+- Medical citation generation
+- Authentication system
 - Docker deployment
 - Kubernetes deployment
 - HuggingFace deployment
-- Feedback loop training
+- Feedback learning system
 - Multilingual IVF support
+- Cloud deployment
 
 ---
 
 # 🏆 Key Learnings
 
-- RAG architecture
+- Retrieval-Augmented Generation (RAG)
 - Vector databases
 - Semantic search
 - Healthcare AI systems
 - Prompt engineering
-- LangChain pipelines
+- LangChain orchestration
 - Local LLM deployment
 - Streamlit frontend development
 - Hallucination mitigation
@@ -409,21 +525,40 @@ This allows:
 
 ---
 
-# 👨‍💻 Author
+# 🎯 Resume Value of This Project
 
-**Lucky Singh**
-
-Aspiring Data Scientist & GenAI Developer  
-Focused on:
-- Healthcare AI
-- RAG Systems
-- NLP
-- Generative AI
-- AI Chatbots
+This project demonstrates:
+- Generative AI Engineering
+- RAG pipeline development
+- NLP understanding
+- LLM orchestration
+- Healthcare AI applications
+- Vector databases
+- Semantic search systems
+- Production-style AI architecture
+- End-to-end AI project deployment
 
 ---
 
-# ⭐ If You Like This Project
+# 👨‍💻 Author
 
-Give it a ⭐ on GitHub.
-**
+# Lucky Singh
+
+Aspiring Data Scientist & GenAI Developer
+
+Focused on:
+- Healthcare AI
+- Generative AI
+- RAG Systems
+- NLP
+- AI Chatbots
+- Vector Databases
+
+---
+
+# ⭐ Support
+
+If you found this project useful:
+
+⭐ Star the repository on GitHub.
+```
